@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Registo</title>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <h1>Registo de Datos</h1>
+            <p>
+                <label for="nombre">Nombre:</label>
+                <br />
+                <input type="text" id="nombre" name="nombre" placeholder="Ej: Martin">
+            </p>
+
+            <p>
+                <label for="email">Email:</label>
+                <br />
+                <input type="email" id="email" name="email" placeholder="Ej: martin@gmail.com">
+            </p>
+
+            <p>
+                <label for="edad">Edad:</label>
+                <br />
+                <input type="number" id="edad" name="edad" placeholder="Ej: 18">
+            </p>
+
+            <p>
+                <label for="recommendation">Recomendado por:</label>
+                <br />
+                <select id="recommendation" name="recommendation">
+                    <option value="0">Google</option>
+                    <option value="1">Amigos</option>
+                    <option value="2">Redes Sociales</option>
+                </select>
+            </p>
+
+            <p>
+                <label for="terms">Género</label>
+                <br />
+                <input type="radio" 
+                    id="genero-masculino" 
+                    name="genero" 
+                    value="masculino">
+                <label for="genero-masculino">Masculino</label>
+                <br/>
+                <input type="radio" 
+                    id="genero-femenino" 
+                    name="genero" 
+                    value="femenino">
+                <label for="genero-femenino">Femenino</label>
+                <br/>
+                <!-- Otros -->
+                <input type="radio" 
+                    id="genero-otro" 
+                    name="genero" 
+                    value="otro">
+                <label for="genero-otro">Otro</label>     
+            </p>
+
+            <p>
+                <label for="comentarios">Comentarios:</label>
+                <br />
+                <textarea id="comentarios" name="comentarios"></textarea>
+            </p>
+
+            <!-- terms and conditions textbox -->
+            <p>
+                <label for="terms">Acepto términos y condiciones:</label>
+                <br />
+                <input type="checkbox" id="terms" name="terms">
+            </p>
+
+            <p>
+                <input type="submit" value="Registrar">
+            </p>
+        </fieldset>
+    </form>
+</body>
+</html>
