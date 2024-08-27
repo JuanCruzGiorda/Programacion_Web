@@ -1,0 +1,28 @@
+header{
+    padding: 10px;
+}
+
+h2{
+    text-align: center;
+}
+.h1-bv{
+    color: rgb(0, 255, 55);
+    text-align: center;
+}
+
+.h2-ms{
+    text-align: center;
+}
+
+
+.lista{
+    color: red;
+    font-size: 20px;
+}
+
+.lista:hover{
+    background-color: lightblue;
+    font-size: 22px;
+}
+
+

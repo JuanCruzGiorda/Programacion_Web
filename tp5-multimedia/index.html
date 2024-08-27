@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Juan Cruz Giorda">
     <meta name="keywords" content="html,css,javascript">
+    <link rel="stylesheet" href="estilos/styles.css">
     <title>Multimedia</title>
 </head>
 
@@ -14,12 +15,12 @@
 <a href="#links-list">Lista de links</a>
 </nav>
 <header>
-    <h1>Bienvenido a mi sitio</h1>
+    <h1 class="h1-bv">Bienvenido a mi sitio</h1>
 </header>
 
 <main>
     <section>
-        <h2 align="center">Microservicios</h2>
+        <h2 class="h2-ms">Microservicios</h2>
         <a style="display: flex;justify-content: center" href="https://aws.amazon.com/microservices/" target="_blank">
             <img width="400" height="300"
                 src="https://middleware.io/backend/wp-content/uploads/2021/09/How-Microservices-architecture-works.jpg"
@@ -27,20 +28,20 @@
         </a>
     </section>
     <section id="links-list">
-        <h2 align="center">
+        <h2>
             Links Útiles
         </h2>
         <ul>
             <li>
-                <a href="audio.html">Audios</a>
+                <a class="lista" href="audio.html">Audios</a>
             </li>
             <li>
-                <a href="video.html">Videos</a>
+                <a class="lista" href="video.html">Videos</a>
             </li>
         </ul>
     </section>
     <section style="display: flex;flex-direction:column;align-items: center">
-        <h2 align="center">
+        <h2>
             Mapa de nuestra ciudad
         </h2>
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d108949.50583964017!2d-62.17562921906395!3d-31.42316028896971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95cb28228bc1d067%3A0x8f04abfe8c3700f4!2sSan%20Francisco%2C%20C%C3%B3rdoba%20Province!5e0!3m2!1sen!2sar!4v1722991493901!5m2!1sen!2sar"

@@ -1,0 +1,10 @@
+-Atributos: Se definen dentro de las etiquetas
+-Css: Tipos: Por etiquetas, por archivo externo,
+-Herencia: Si ponemos un estilo en la etiqueta superior o padre, se van a modificar 
+todas las hijas. ¿Cual tiene mayor precedencia? 
+  -Desde el css se dice Selector y dentro de este estan las propiedades
+  -Desde el html se dice atributos
+
+Jerarquia: Toma lo ultimo agregado como modificacion
+Si la etiqueta en css dice important es el de mayor precedencia de todos
+¿Como se puede instanciar una etiqueta?
