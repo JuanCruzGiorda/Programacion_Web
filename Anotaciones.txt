@@ -8,3 +8,8 @@ todas las hijas. ¿Cual tiene mayor precedencia?
 Jerarquia: Toma lo ultimo agregado como modificacion
 Si la etiqueta en css dice important es el de mayor precedencia de todos
 ¿Como se puede instanciar una etiqueta?
+
+clase inerent
+
+Script
+

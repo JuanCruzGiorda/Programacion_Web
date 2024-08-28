@@ -1,0 +1,25 @@
+a[href="https://www.google.com/?hl=es"]{
+    color: greenyellow;
+}
+
+
+a[href="https://www.facebook.com/?hl=es"]{
+    color: rgb(71, 80, 213);
+}
+
+a[href="https://www.instagram.com/?hl=es"]{
+    color: rgb(215, 49, 126);
+}
+
+a{
+    padding: 15px;
+}
+
+#pr-transition{
+    transition: background 1s;
+}
+
+
+#pr-transition:hover{
+    background-color: rgb(0, 255, 251);
+}
