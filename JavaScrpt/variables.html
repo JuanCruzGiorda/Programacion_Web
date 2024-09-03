@@ -29,7 +29,10 @@
         var persona = {
             nombre: 'Juan',
             edad: 30,
-            "Mi pais": "Arg"
+            "Mi pais": "Arg",
+            saludar:function () {
+               console.log("Hola soy Juan ") ;
+            }
         };
         console.log("El json es: ",persona)
         
@@ -39,6 +42,43 @@
         var v = objeto.algo || 45
         console.log(v)
         
+        persona.saludar()
+        console.log(arreglo[1]);
+        eval('2 + 2')
+
+        function saludar (tipo,nombre){
+            var tipo = tipo || "hola"
+            var nombre = nombre || "juan"
+            return tipo + ' ' +  nombre
+        }
+
+        console.log(saludar("chau","pedro"));
+
+
+        /*Probando Variables locales y globales*/
+        var x1 = 1;
+        function f1(){
+            var x1 = 10;
+        }
+        f1();
+        console.log(x1);
+
+        var x2 = 20;
+        function f2(){
+            x2 = 10;
+        }
+        f2();
+        console.log(x2);
+
+        var x3;
+        function f3(){
+            var x3 = 15;
+            console.log(x3);
+        }
+        f3();
+        console.log(x3);
+
+
     </script>
 </body>
 </html>
