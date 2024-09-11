@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabajo Practico - Dom</title>
+</head>
+<body>
+    <form>
+            <p>
+                <label for="nombre">Nombre:</label>
+                <br>
+                <input type="text" id="nombre" name="nombre" placeholder="Ej: Martin">
+            </p>
+            <p>
+                <label for="nombre">Apellido:</label>
+                <br>
+                <input type="text" id="apellido" name="apellido" placeholder="Ej: Giorda">
+            </p>
+            <p>
+                <label for="fecha_nacimiento">Fecha de nacimiento:</label>
+                <br>
+                <input type="date" class="fecha_nacimiento" name="fecha_nacimiento" placeholder="Ej: 2002">
+            </p>
+            <p>
+                <label for="direccion">Direccion:</label>
+                <br>
+                <input type="text" class="direccion" name="direccion" placeholder="Ej: roca 2345">
+            </p>
+            <p>
+                <label for="dni">Dni:</label>
+                <br>
+                <input type="text" class="dni" name="dni" placeholder="Ej: 44371784">
+            </p>
+
+            <button type="button" onclick="completarNombre_apellido()">Nombre y Apellido</button>
+            <button type="button" onclick="completarDni_nacimiento_direccion()">Otros Datos</button>
+            <button type="button" onclick="crearRadioButtons()">Sexo</button>
+            <button type="button" onclick="crearH1()">Datos personales</button>
+            <button type="button" onclick="borrarH1()">Borrar Titulo</button>
+    </form>
+    <script>
+        function completarNombre_apellido(){
+        var nombre = document.getElementById('nombre');
+        nombre.value = "Juan Cruz";
+
+        var apellido = document.getElementById('apellido');
+        apellido.value = "Giorda";
+    }
+
+    function completarDni_nacimiento_direccion(){
+        var dni = document.getElementsByClassName('dni')[0];
+        dni.value = "44371784";
+
+        var fecha_nacimiento = document.getElementsByClassName('fecha_nacimiento')[0];
+        fecha_nacimiento.value = "2002-06-06";
+
+        var direccion = document.getElementsByClassName('direccion')[0];
+        direccion.value = "Roca 2345";
+    }
+    function crearRadioButtons() {
+        var form = document.querySelector('form fieldset');
+
+        var p = document.createElement('p');
+
+        var labelFemenino = document.createElement('label');
+        var radioFemenino = document.createElement('input');
+        radioFemenino.type = 'radio';
+        radioFemenino.name = 'sexo';
+        radioFemenino.value = 'femenino';
+        labelFemenino.appendChild(radioFemenino);
+        labelFemenino.appendChild(document.createTextNode('Femenino'));
+
+        var labelMasculino = document.createElement('label');
+        var radioMasculino = document.createElement('input');
+        radioMasculino.type = 'radio';
+        radioMasculino.name = 'sexo';
+        radioMasculino.value = 'masculino';
+        labelMasculino.appendChild(radioMasculino);
+        labelMasculino.appendChild(document.createTextNode('Masculino'));
+
+        p.appendChild(labelFemenino);
+        p.appendChild(labelMasculino);
+
+        form.appendChild(p);
+    }
+
+    function crearH1(){
+        var elemento = document.getElementsByTagName('header'); 
+        var h1 = document.createElement('h1');
+        var texto = document.createTextNode('Datos personales');
+        h1.appendChild(texto);
+
+        var form = document.querySelector('form');
+        form.insertBefore(h1, form.firstChild);
+    }
+
+    function borrarH1(){
+        var h1 = document.querySelector('h1');
+        h1.remove();
+    }
+    </script>
+
+    <style> 
+        form {
+                width: 50%;
+                margin: 0 auto;
+                background-color: #f9f9f9;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+        
+            p {
+                margin-bottom: 10px;
+            }
+        
+            label {
+                display: block;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+        
+            input {
+                width: 100%;
+                padding: 10px;
+                margin-top: 5px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+                transition: border-color 0.3s, box-shadow 0.3s;
+            }
+        
+            input:focus {
+                border-color: #66afe9;
+                box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
+                outline: none;
+            }
+        
+            button {
+                padding: 10px 20px;
+                margin-top: 10px;
+                border: none;
+                border-radius: 5px;
+                background-color: #007bff;
+                color: white;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+        
+            button:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</body>
+</html>
