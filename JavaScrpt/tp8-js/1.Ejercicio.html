@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 - Tp 8</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 - Tp 8</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        a {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Enlaces</h1>
+    <a href="https://www.google.com" target="_blank">Google</a>
+    <a href="https://www.facebook.com" target="_blank">Facebook</a>
+    <a href="https://www.twitter.com" target="_blank">Twitter</a>
+    <a href="https://www.youtube.com" target="_blank">YouTube</a>
+
+    <p id="link-count"></p>
+
+    <script>
+        // Obtener todos los elementos <a>
+        var enlaces = document.getElementsByTagName('a');
+        // Contar la cantidad de elementos <a>
+        var cantidadEnlaces = enlaces.length;
+        // Mostrar la cantidad en el elemento <p> con id "link-count"
+        document.getElementById('link-count').textContent = 'Cantidad de enlaces: ' + cantidadEnlaces;
+    </script>
+</body>
+</html>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objetos</title>
+</head>
+<body>
+    <script>
+    //Objeto Persona
+    var persona =
+        {
+            //Propiedades / atributos
+            nombre: 'Juan',
+            apellido: 'Giorda',
+            edad: 18,
+            dni: 44371784,
+        //Objeto moto                   
+        moto:{
+            marca: 'Honda',
+            modelo: 'CBR 600',
+            cilindrada: 600
+        },
+        
+        mostrarnombre: function(){
+            alert("Me llamo " + this.nombre);
+        },
+        cambiarNombre: function(nuevoNombre){
+            this.nombre = nuevoNombre;
+        } 
+    }
+
+    console.log(persona.nombre);
+    console.log(persona.cambiarNombre('Pedro'));
+    console.log(persona.mostrarnombre());
+    </script>
+</body>
+</html>

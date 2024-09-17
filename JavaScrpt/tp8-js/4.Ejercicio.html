@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4 - Tp 8</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        input[type="text"] {
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Camisa</td>
+                <td><input type="text" id="precio-camisa" value="30000" readonly></td>
+                <td><input type="text" id="cantidad-camisa"></td>
+                <td><input type="text" id="subtotal-camisa" readonly></td>
+            </tr>
+            <tr>
+                <td>Gorra</td>
+                <td><input type="text" id="precio-gorra" value="50000" readonly></td>
+                <td><input type="text" id="cantidad-gorra"></td>
+                <td><input type="text" id="subtotal-gorra" readonly></td>
+            </tr>
+            <tr>
+                <td>Zapatos</td>
+                <td><input type="text" id="precio-zapatos" value="60000" readonly></td>
+                <td><input type="text" id="cantidad-zapatos"></td>
+                <td><input type="text" id="subtotal-zapatos" readonly></td>
+            </tr>
+            <tr>
+                <td>Pantalon</td>
+                <td><input type="text" id="precio-pantalon" value="80000" readonly></td>
+                <td><input type="text" id="cantidad-pantalon"></td>
+                <td><input type="text" id="subtotal-pantalon" readonly></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>
+        <label for="total-compra">Total Compra:</label>
+        <input type="text" id="total-compra" readonly>
+    </p>
+
+    <button type="button" onclick="calcularSubtotales()">Calcular Subtotales</button>
+    <button type="button" onclick="calcularTotal()">Calcular Total</button>
+
+    <script>
+        function calcularSubtotales() {
+            var productos = ['camisa', 'gorra', 'zapatos', 'pantalon'];
+            productos.forEach(function(producto) {
+                var precio = parseFloat(document.getElementById('precio-' + producto).value);
+                var cantidad = parseFloat(document.getElementById('cantidad-' + producto).value);
+                var subtotal = precio * cantidad;
+                document.getElementById('subtotal-' + producto).value = isNaN(subtotal) ? '' : subtotal;
+            });
+        }
+
+        function calcularTotal() {
+            var productos = ['camisa', 'gorra', 'zapatos', 'pantalon'];
+            var total = 0;
+            productos.forEach(function(producto) {
+                var subtotal = parseFloat(document.getElementById('subtotal-' + producto).value);
+                total += isNaN(subtotal) ? 0 : subtotal;
+            });
+            document.getElementById('total-compra').value = total;
+        }
+    </script>
+</body>
+</html>
+</body>
+</html>

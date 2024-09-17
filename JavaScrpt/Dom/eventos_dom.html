@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos del Dom</title>
+</head>
+<body>
+    <h1>Eventos del Dom</h1>
+    <div class="div_buttons">
+        <button id="btn1">Event Listener</button>  
+        <button id="btn2">Event listener anidado</button>
+        <button id="btn3">Event listener simultaneo</button>
+        <button id="btn4">Funciones anidadas</button>
+    </div>
+    
+    <script>
+    // Evento add event listener
+    document.getElementById('btn1').addEventListener('click', function(){
+        alert('Hiciste click en el boton');
+    });
+
+    // Evento con funciones anidadas
+    document.getElementById('btn2').addEventListener('click', function(){
+        mostrarMensaje();
+    });
+
+    function mostrarMensaje(){
+        alert('Hiciste click en el boton');
+    }
+
+    //Ejecutar varios Event Listener con distintos eventos
+    //Eventos simultaneos en un mismo elemento
+
+    var elemento = document.getElementById('btn3');
+
+    elemento.addEventListener('mouseup',mostrarMensaje);
+
+    //Evento con funciones anidadas
+    document.getElementById('btn4').addEventListener('click', function(){
+        saludar('Juan Cruz');
+    });
+
+    function saludar(nombre){
+        alert('Hola ' + nombre);
+    }
+    </script>
+
+    <style>
+
+    .div_buttons{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row ; 
+    }
+    h1{
+        text-align: center;
+    }
+    button{
+        line-height: 15px;
+        margin: 10px;
+        padding: 10px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover{
+        background-color: #2980b9;
+        transition: 0.5s;
+    }
+    </style>
+</body>
+</html>

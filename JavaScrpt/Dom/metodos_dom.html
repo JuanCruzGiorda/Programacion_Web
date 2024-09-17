@@ -46,6 +46,13 @@
 
 
     <script>
+
+        function cambiarTexto(){
+            var elemento = document.getElementById('idP');
+            elemento.innerHTML = "Texto cambiado";
+
+            elemento.setAttribute('style','background-color:violet');
+        }
         // acceder a traves de getElementById y aplicamos el innerHTML
         function cambiarTexto(){
             var elemento = document.getElementById('idP');

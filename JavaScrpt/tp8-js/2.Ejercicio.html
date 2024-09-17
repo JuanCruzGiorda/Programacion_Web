@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2 - Tp 8</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2 - Tp 8</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        p, label, input {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <p id="parrafo">Este es un párrafo.</p>
+    <label for="input-text" id="etiqueta">Etiqueta para el input:</label>
+    <input type="text" id="input-text" placeholder="Escribir algo...">
+
+    <script>
+        // Acceder al elemento <p> por su id
+        var parrafo = document.getElementById('parrafo');
+        // Acceder al elemento <label> por su id
+        var etiqueta = document.getElementById('etiqueta');
+        // Acceder al elemento <input> por su id
+        var inputText = document.getElementById('input-text');
+
+        // Realizar alguna acción con los elementos
+        parrafo.style.color = 'blue';
+        etiqueta.style.fontWeight = 'bold';
+        inputText.value = 'Texto predeterminado';
+    </script>
+</body>
+</html>
+</body>
+</html>
