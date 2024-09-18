@@ -21,7 +21,7 @@
             modelo: 'CBR 600',
             cilindrada: 600
         },
-        
+        //Metodo
         mostrarnombre: function(){
             alert("Me llamo " + this.nombre);
         },
@@ -32,7 +32,69 @@
 
     console.log(persona.nombre);
     console.log(persona.cambiarNombre('Pedro'));
-    console.log(persona.mostrarnombre());
+
+    //Creacion de objetos y herencia
+    var empleado = Object.create(persona);
+    empleado.nombre = 'Carlos';
+    console.log(empleado.nombre);
+
+    var empleado1 = Object.create(empleado);
+    empleado1.edad = 30;
+    empleado1.mostrarEdad = function(){
+        alert('Tengo ' + this.edad + ' años');
+    }
+    //console.log(mostrarEdad());    
+
+    //Creacion de objetos mediante la notacion literal, funcion anonima, y retorno del objeto
+    var miPersona = function(nombreInicial, edadInicial){
+        var objeto2 = {
+            nombre: nombreInicial,
+            edad: edadInicial,
+            cambiarNombre: function(nombreInicial){
+                this.nombre = nombreInicial;
+            },
+            mostrarNombre: function(){
+                alert('Me llamo ' + this.nombre);
+            }
+        };
+        return objeto2;
+    }
+    var personaCreada = miPersona('Martin', 18);
+    personaCreada.mostrarNombre();
+
+
+    //Constructor de objetos
+    function constructor (nombreInicial, edadInicial){
+        this.nombre = nombreInicial;
+        this.edad = edadInicial;
+        //Metodos del constructor 
+        this.cambiarNombre = function(nuevoNombre){
+            this.nombre =  nuevoNombre;
+        }
+        this.mostrarNombre = function(){
+            alert('Me llamo ' + this.nombre);
+        }
+    }
+    var personaCreada2 = new constructor('Pablo', 24);
+    personaCreada2.mostrarNombre();
+
+    personaCreada2.peso = 80;
+    
+    //Si creo un objeto nuevo no va a heredar el peso, porque el molde fue creado solo para 2 atributos
+    var personaCreada3 = new constructor('Eliana', 44);
+
+    //Para agregar funcionalidad debo hacer con el prototype
+    constructor.prototype.mostrarEdad2 = function(){
+        alert('Tengo ' + this.edad + ' años');
+    }
+
+    var personaCreada4 = new constructor('Damian', 55);
+    personaCreada4.mostrarEdad2();
+
+    //Agegar nuevo atributo al constructor
+    constructor.prototype.estadoCivil = 'Soltero';
+
+    var personaCreada5 = new constructor('Lucas', 33);
     </script>
 </body>
 </html>
