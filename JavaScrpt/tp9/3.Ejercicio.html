@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 Ejercicio</title>
+</head>
+<body>
+    <script>
+            var persona = {
+            nombre: 'Juan',
+            apellido: 'Giorda',
+            edad: 18,
+            dni: 44371784,
+            
+            mostrarEdad: function(){
+                alert("Mi edad es " + this.edad);
+            },
+            cambiarEdad: function(nuevaEdad){
+                this.edad = nuevaEdad;
+                alert("Mi nueva edad es " + this.edad);
+            } 
+        }
+
+        var persona1 = Object.create(persona);
+        persona1.nombre = 'Pedro';
+        alert(persona1.nombre);
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 Ejercicio</title>
+</head>
+<body>
+    <script>
+        function constructor (nombreInicial, edadInicial){
+        this.nombre = nombreInicial;
+        this.edad = edadInicial;
+        
+        this.cambiarNombre = function(nuevoNombre){
+            this.nombre =  nuevoNombre;
+        }
+        this.mostrarNombre = function(){
+            alert('Me llamo ' + this.nombre);
+        }
+    }
+    var personaCreada1 = new constructor('Pablo', 24);
+    personaCreada1.mostrarNombre();
+
+    personaCreada2.peso = 80;
+    </script>
+</body>
+</html>

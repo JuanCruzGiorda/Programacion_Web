@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Ejercicio</title>
+</head>
+<body>
+    <script>
+        function constructor (nombreInicial, edadInicial){
+        this.nombre = nombreInicial;
+        this.edad = edadInicial;
+        //Metodos del constructor 
+        this.cambiarNombre = function(nuevoNombre){
+            this.nombre =  nuevoNombre;
+        }
+        this.mostrarNombre = function(){
+            alert('Me llamo ' + this.nombre);
+        }
+    }
+    var personaCreada2 = new constructor('Pablo', 24);
+    personaCreada2.mostrarNombre();
+
+    constructor.prototype.mostrarEdad2 = function(){
+        alert('Tengo ' + this.edad + ' años');
+    }
+    constructor.prototype.estadoCivil = 'Soltero';
+
+    console.log(personaCreada2.mostrarEdad2());
+    console.log(personaCreada2.estadoCivil);
+    </script>
+</body>
+</html>

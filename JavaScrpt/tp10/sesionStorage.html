@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Compiled and minified CSS -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> 
+    <title>Sesion Storage</title>
+</head>
+<body>
+    <section>
+        <h1>Ingreso de Datos</h1>
+        <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="first_name" type="text" class="validate" required>
+                  <label for="first_name">Nombre</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="last_name" type="text" class="validate" required>
+                  <label for="last_name">Apellido</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="direccion" type="text" class="validate">
+                  <label for="direccion">Direccion</label>
+                </div>
+                <div class="input-field col s6">
+                  <input id="codigoPostal" type="text" class="validate">
+                  <label for="codigoPostal">Codigo Postal</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s6">
+                  <input id="dni" type="text" class="dni" required>
+                  <label for="dni">Dni</label>
+                </div>
+              </div>    
+            </form>
+        </div>
+        <button type="button" onclick="agregarElemento()">Agregar</button>
+        <button type="button" onclick="eliminarElemento()">Eliminar</button>
+    </section>
+    <section>
+        <h2>Datos Almacenados</h2>
+        <div id="datosAlmacenados"></div>
+    </section>
+
+    <script>
+        function iniciar() {
+            mostrarDatos();
+        }
+    </script>
+      <style>
+        .row .col .s6{
+            width: 40%;
+        }
+        .button{
+            margin: 10px;
+        }
+      </style>
+</body>
+</html>
