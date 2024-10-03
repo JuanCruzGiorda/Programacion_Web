@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        section {
+            margin-bottom: 20px;
+        }
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"], input[type="number"], input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .alumno {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body onload="iniciar()">
+    <section>
+        <h1>Ingreso de Alumnos</h1>
+        <form id="formulario">
+            <label for="legajo">Número de Legajo:</label>
+            <input type="number" id="legajo" name="legajo" required>
+
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" required>
+
+            <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento">
+
+            <label for="dni">DNI:</label>
+            <input type="number" id="dni" name="dni" required>
+
+            <button type="button" onclick="agregarAlumno()">Agregar Alumno</button>
+        </form>
+    </section>
+    <section>
+        <h2>Lista de Alumnos</h2>
+        <div id="listaAlumnos"></div>
+        <button type="button" onclick="eliminarTodos()">Eliminar Todos los Alumnos</button>
+    </section>
+
+    <script>
+        function iniciar() {
+            mostrarAlumnos();
+            window.addEventListener('storage', mostrarAlumnos);
+        }
+
+        function agregarAlumno() {
+            var legajo = document.getElementById('legajo').value;
+            var nombre = document.getElementById('nombre').value;
+            var apellido = document.getElementById('apellido').value;
+            var fechaNacimiento = document.getElementById('fecha_nacimiento').value;
+            var dni = document.getElementById('dni').value;
+
+            if (legajo && nombre && apellido && dni) {
+                var alumno = {
+                    nombre: nombre,
+                    apellido: apellido,
+                    fechaNacimiento: fechaNacimiento,
+                    dni: dni
+                };
+                localStorage.setItem(legajo, JSON.stringify(alumno));
+                mostrarAlumnos();
+                document.getElementById('formulario').reset();
+            } else {
+                alert('Por favor, complete los campos requeridos.');
+            }
+        }
+
+        function eliminarAlumno(legajo) {
+            localStorage.removeItem(legajo);
+            mostrarAlumnos();
+        }
+
+        function eliminarTodos() {
+            localStorage.clear();
+            mostrarAlumnos();
+        }
+
+        function mostrarAlumnos() {
+            var listaAlumnos = document.getElementById('listaAlumnos');
+            listaAlumnos.innerHTML = '';
+            if (localStorage.length === 0) {
+                listaAlumnos.innerHTML = '<p>No hay alumnos almacenados.</p>';
+            } else {
+                var alumnos = [];
+                for (var i = 0; i < localStorage.length; i++) {
+                    var key = localStorage.key(i);
+                    var alumno = JSON.parse(localStorage.getItem(key));
+                    alumnos.push({ legajo: key, ...alumno });
+                }
+                alumnos.sort((a, b) => a.legajo - b.legajo);
+                alumnos.forEach(alumno => {
+                    listaAlumnos.innerHTML += `
+                        <div class="alumno">
+                            <span>${alumno.legajo} - ${alumno.nombre} ${alumno.apellido}</span>
+                            <button onclick="eliminarAlumno('${alumno.legajo}')">Eliminar</button>
+                        </div>
+                    `;
+                });
+            }
+        }
+    </script>
+</body>
+</html>
+</body>
+</html>
