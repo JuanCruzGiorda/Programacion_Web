@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <title>Productos</title>
+</head>
+<body>
+
+<div class="container">
+    <h2>Agregar Producto</h2>
+    <form id="product-form">
+        <input type="text" id="product-name" placeholder="Nombre del Producto" required>
+        <input type="text" id="product-code" placeholder="Código del Producto" required>
+        <input type="number" id="product-quantity" placeholder="Cantidad" required>
+        <input type="number" id="product-price" placeholder="Precio" required>
+        <button type="submit" class="btn">Añadir Producto</button>
+    </form>
+
+    <div id="edit-form-container" style="display: none;">
+        <h2>Editar Producto</h2>
+        <form id="edit-product-form">
+            <input type="text" id="edit-product-name" placeholder="Nombre del Producto" required>
+            <input type="text" id="edit-product-code" placeholder="Código del Producto" required>
+            <input type="number" id="edit-product-quantity" placeholder="Cantidad" required>
+            <input type="number" id="edit-product-price" placeholder="Precio" required>
+            <button type="submit" class="btn">Guardar Cambios</button>
+            <button type="button" id="cancel-edit" class="btn red">Cancelar</button>
+        </form>
+    </div>    
+
+    <button id="back-to-users-btn" class="btn">Volver a usuarios</button>
+
+    <h2>Lista de Productos</h2>
+    <table id="product-table" class="striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Código</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="product-list">
+        </tbody>
+    </table>
+</div>
+<style>
+    .btn {
+        margin-top: 10px;
+        width: 200px;
+    }
+
+    #product-list tr {
+        margin-top: 10px;
+    }
+</style>
+<script src="js/products.js"></script>
+</body>
+</html>
