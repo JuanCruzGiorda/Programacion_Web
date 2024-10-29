@@ -5,8 +5,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const editFormContainer = document.getElementById('edit-form-container');
     const editProductForm = document.getElementById('edit-product-form');
     const cancelEditBtn = document.getElementById('cancel-edit');
+    const deleteModal = document.getElementById('delete-modal');
+    const confirmDeleteBtn = document.getElementById('confirm-delete');
 
     let currentEditProductId = null;
+    let currentDeleteProductId = null;
+
+    // Inicializar el modal de Materialize
+    const modalInstance = M.Modal.init(deleteModal);
 
     // Cargar productos al cargar la página
     fetch('http://localhost:3000/api/products')
@@ -27,8 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 productList.appendChild(tr);
             });
         });
-    
-        
+
     // Agregar nuevo producto con AJAX
     productForm.addEventListener('submit', (event) => {
         event.preventDefault();
@@ -44,7 +49,13 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             body: JSON.stringify({ name, code, quantity, price })
         })
-        .then(response => response.json())
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Error al añadir producto');
+            }
+        })
         .then(product => {
             const tr = document.createElement('tr');
             tr.innerHTML = `
@@ -58,48 +69,64 @@ document.addEventListener('DOMContentLoaded', () => {
                 </td>
             `;
             productList.appendChild(tr);
+            M.toast({html: 'Producto añadido exitosamente', classes: 'green'});
+        })
+        .catch(error => {
+            M.toast({html: error.message, classes: 'red'});
         });
     });
 
-    // Eliminar producto con AJAX
+    // Mostrar modal de confirmación de eliminación
     productList.addEventListener('click', (event) => {
         if (event.target.classList.contains('delete-btn')) {
-            const productId = event.target.getAttribute('data-id');
-            if (confirm('¿Estás seguro de que quieres eliminar este producto?')) {
-                fetch(`http://localhost:3000/api/products/delete/${productId}`, {
-                    method: 'DELETE'
-                })
-                .then(() => {
-                    productList.removeChild(event.target.parentElement.parentElement);
-                });
-            }
+            currentDeleteProductId = event.target.getAttribute('data-id');
+            modalInstance.open();
         }
     });
+
+    // Confirmar eliminación de producto
+    confirmDeleteBtn.addEventListener('click', () => {
+        fetch(`http://localhost:3000/api/products/delete/${currentDeleteProductId}`, {
+            method: 'DELETE'
+        })
+        .then(response => {
+            if (response.ok) {
+                const tr = productList.querySelector(`button[data-id="${currentDeleteProductId}"]`).parentElement.parentElement;
+                productList.removeChild(tr);
+                M.toast({html: 'Producto eliminado exitosamente', classes: 'green'});
+            } else {
+                throw new Error('Error al eliminar producto');
+            }
+        })
+        .catch(error => {
+            M.toast({html: error.message, classes: 'red'});
+        });
+    });
+
     // Mostrar formulario de edición con AJAX
-productList.addEventListener('click', (event) => {
-    if (event.target.classList.contains('edit-btn')) {
-        const productId = event.target.getAttribute('data-id');
-        currentEditProductId = productId;
-        fetch(`http://localhost:3000/api/products/${productId}`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Producto no encontrado');
-                }
-                return response.json();
-            })
-            .then(product => {
-                document.getElementById('edit-product-name').value = product.name;
-                document.getElementById('edit-product-code').value = product.code;
-                document.getElementById('edit-product-quantity').value = product.quantity;
-                document.getElementById('edit-product-price').value = product.price;
-                editFormContainer.style.display = 'block';
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Error al obtener el producto');
-            });
-    }
-});
+    productList.addEventListener('click', (event) => {
+        if (event.target.classList.contains('edit-btn')) {
+            const productId = event.target.getAttribute('data-id');
+            currentEditProductId = productId;
+            fetch(`http://localhost:3000/api/products/${productId}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Producto no encontrado');
+                    }
+                    return response.json();
+                })
+                .then(product => {
+                    document.getElementById('edit-product-name').value = product.name;
+                    document.getElementById('edit-product-code').value = product.code;
+                    document.getElementById('edit-product-quantity').value = product.quantity;
+                    document.getElementById('edit-product-price').value = product.price;
+                    editFormContainer.style.display = 'block';
+                })
+                .catch(error => {
+                    M.toast({html: error.message, classes: 'red'});
+                });
+        }
+    });
 
     // Editar producto con AJAX
     editProductForm.addEventListener('submit', (event) => {
@@ -116,7 +143,13 @@ productList.addEventListener('click', (event) => {
             },
             body: JSON.stringify({ name, code, quantity, price })
         })
-        .then(response => response.json())
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Error al actualizar producto');
+            }
+        })
         .then(() => {
             const tr = productList.querySelector(`button[data-id="${currentEditProductId}"]`).parentElement.parentElement;
             tr.innerHTML = `
@@ -130,6 +163,10 @@ productList.addEventListener('click', (event) => {
                 </td>
             `;
             editFormContainer.style.display = 'none';
+            M.toast({html: 'Producto actualizado exitosamente', classes: 'green'});
+        })
+        .catch(error => {
+            M.toast({html: error.message, classes: 'red'});
         });
     });
 
@@ -139,7 +176,7 @@ productList.addEventListener('click', (event) => {
     });
 
     // Redirigir a la vista de usuarios
-    document.getElementById('back-to-users-btn').addEventListener('click', () => {
+    backToUsersBtn.addEventListener('click', () => {
         window.location.href = '/';
     });
 });
